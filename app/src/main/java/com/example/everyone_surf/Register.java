@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -66,22 +65,22 @@ public class Register extends AppCompatActivity {
             databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<String>() {
                 @Override
                 public void onCompleted(String uid) {
-
                     user.setId(uid);
-                    Toast.makeText(Register.this, "נרשמת בהצלחה!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, "נרשמת בהצלחה! כעת התחבר", Toast.LENGTH_SHORT).show();
 
-                    Intent go = new Intent(Register.this, MainActivity2.class);
+                    // מעבר למסך התחברות
+                    Intent go = new Intent(Register.this, Login.class);
                     go.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(go);
+                    finish();
                 }
 
                 @Override
                 public void onFailed(Exception e) {
-                    Toast.makeText(Register.this, "שגיאה בהרשמה", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, "שגיאה בהרשמה: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            });
-
-        });
+            }); // סגירת ה-Callback
+        }); // סגירת ה-OnClickListener
 
         goToLogin.setOnClickListener(v -> {
             startActivity(new Intent(Register.this, Login.class));
