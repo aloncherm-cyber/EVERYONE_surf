@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
+    android:background="#EAF6FF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="בחר אזור לשיעור"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#0A4C8A"
+        android:layout_marginBottom="30dp"/>
+
+    <Button android:id="@+id/btnNorth" android:layout_width="match_parent" android:layout_height="70dp"
+        android:text="צפון" android:textSize="20sp" android:layout_marginBottom="10dp" android:backgroundTint="#0A4C8A"/>
+
+    <Button android:id="@+id/btnCenter" android:layout_width="match_parent" android:layout_height="70dp"
+        android:text="מרכז" android:textSize="20sp" android:layout_marginBottom="10dp" android:backgroundTint="#0A4C8A"/>
+
+    <Button android:id="@+id/btnSouth" android:layout_width="match_parent" android:layout_height="70dp"
+        android:text="דרום" android:textSize="20sp" android:backgroundTint="#0A4C8A"/>
+
+</LinearLayout>

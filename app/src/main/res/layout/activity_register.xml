@@ -11,7 +11,6 @@
     android:layoutDirection="rtl"
     tools:context=".Register">
 
-    <!-- כותרת -->
     <TextView
         android:id="@+id/titleRegister"
         android:layout_width="wrap_content"
@@ -25,8 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- שם פרטי -->
     <EditText
         android:id="@+id/registerFname"
         android:layout_width="0dp"
@@ -35,15 +32,11 @@
         android:background="@android:drawable/edit_text"
         android:padding="12dp"
         android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
         android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@id/titleRegister"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- שם משפחה -->
     <EditText
         android:id="@+id/registerLname"
         android:layout_width="0dp"
@@ -52,15 +45,11 @@
         android:background="@android:drawable/edit_text"
         android:padding="12dp"
         android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/registerFname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- טלפון -->
     <EditText
         android:id="@+id/registerPhone"
         android:layout_width="0dp"
@@ -70,32 +59,51 @@
         android:background="@android:drawable/edit_text"
         android:padding="12dp"
         android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/registerLname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- מין -->
-    <EditText
-        android:id="@+id/registerGender"
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
         android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:hint="מין (ז/נ)"
-        android:background="@android:drawable/edit_text"
-        android:padding="12dp"
-        android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="14dp"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/registerPhone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מין:"
+            android:textSize="16sp"
+            android:textColor="#0A4C8A"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
-    <!-- גיל -->
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="זכר"
+            android:layout_marginEnd="15dp"/>
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="נקבה" />
+
+        <RadioButton
+            android:id="@+id/radioOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="אחר" />
+    </RadioGroup>
+
     <EditText
         android:id="@+id/registerAge"
         android:layout_width="0dp"
@@ -105,15 +113,11 @@
         android:background="@android:drawable/edit_text"
         android:padding="12dp"
         android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
         android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@id/registerGender"
+        app:layout_constraintTop_toBottomOf="@id/radioGroupGender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- אימייל -->
     <EditText
         android:id="@+id/registerEmail"
         android:layout_width="0dp"
@@ -123,15 +127,11 @@
         android:background="@android:drawable/edit_text"
         android:padding="12dp"
         android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/registerAge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- סיסמה -->
     <EditText
         android:id="@+id/registerPassword"
         android:layout_width="0dp"
@@ -141,15 +141,11 @@
         android:background="@android:drawable/edit_text"
         android:padding="12dp"
         android:textAlignment="viewStart"
-        android:textDirection="rtl"
-        android:layoutDirection="rtl"
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/registerEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- כפתור הרשמה -->
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
@@ -163,8 +159,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <!-- מעבר להתחברות -->
     <TextView
         android:id="@+id/goToLogin"
         android:layout_width="wrap_content"

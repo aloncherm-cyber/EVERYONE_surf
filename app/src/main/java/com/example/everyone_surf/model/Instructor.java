@@ -4,6 +4,8 @@ public class Instructor  extends  User{
 
     int experience_year;
 
+    String pic;
+
     public Instructor(String id, String fname, String lname, String phone, String gender, String age, String email, String password, int experience_year) {
         super(id, fname, lname, phone, gender, age, email, password);
         this.experience_year = experience_year;

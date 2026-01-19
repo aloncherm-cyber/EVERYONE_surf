@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#EAF6FF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="פרסום שיעור חדש"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="#0A4C8A"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText android:id="@+id/etDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="תאריך (למשל 20/05)" android:inputType="date"/>
+    <EditText android:id="@+id/etTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="שעה (למשל 10:00)" android:inputType="time"/>
+    <EditText android:id="@+id/etPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="מחיר" android:inputType="number"/>
+
+    <Button
+        android:id="@+id/btnSaveLesson"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="פרסם שיעור"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0A4C8A"/>
+</LinearLayout>

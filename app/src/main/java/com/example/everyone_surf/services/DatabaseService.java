@@ -497,7 +497,7 @@ public class DatabaseService {
     /// generate a new id for a new cart in the database
     /// @return a new id for the cart
     /// @see #generateNewId(String)
-    /// @see Cart
+
     public String generateCartId() {
         return generateNewId(CARTS_PATH);
     }
