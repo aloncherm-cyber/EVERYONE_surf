@@ -65,18 +65,18 @@ public class LessonList extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        databaseService.getLessonList(new DatabaseService.DatabaseCallback<>() {
-            @Override
-            public void onCompleted(List<Lesson> lessons) {
-                lessonAdapter.setLessonList(lessons);
-                tvLessonCount.setText("Total lessons: " + lessons.size());
-            }
-
-            @Override
-            public void onFailed(Exception e) {
-                Log.e(TAG, "Failed to get lessons list", e);
-            }
-        });
+//        databaseService.getLessonList(new DatabaseService.DatabaseCallback<>() {
+//            @Override
+//            public void onCompleted(List<Lesson> lessons) {
+//                lessonAdapter.setLessonList(lessons);
+//                tvLessonCount.setText("Total lessons: " + lessons.size());
+//            }
+//
+//            @Override
+//            public void onFailed(Exception e) {
+//                Log.e(TAG, "Failed to get lessons list", e);
+//            }
+//        });
     }
 
 

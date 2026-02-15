@@ -40,7 +40,7 @@ public class MainActivity2 extends AppCompatActivity {
                                           @Override
                                           public void onClick(View v) {
                                               Toast.makeText(MainActivity2.this, "חופים בישראל", Toast.LENGTH_SHORT).show();
-                                              Intent go = new Intent(MainActivity2.this, Login.class);
+                                              Intent go = new Intent(MainActivity2.this,Register_instructor.class);
                                               startActivity(go);
                                           }
 
@@ -54,14 +54,19 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity2.this, "מועדוני גלישה", Toast.LENGTH_SHORT).show()
+                Toast.makeText(MainActivity2.this, "מועדוני גלישה", Toast.LENGTH_SHORT).show();
 
             }
 
         });
 
-        btnShops.setOnClickListener(v ->
-                Toast.makeText(MainActivity2.this, "חנויות גלישה", Toast.LENGTH_SHORT).show()
+        btnShops.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Toast.makeText(MainActivity2.this, "חנויות גלישה", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
         );
 
         btnLessons.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +75,7 @@ public class MainActivity2 extends AppCompatActivity {
                                               Intent go = new Intent(MainActivity2.this, Login.class);
                                               startActivity(go);
 
-                                              Toast.makeText(MainActivity2.this, "שיעורי גלישה", Toast.LENGTH_SHORT).show()
+                                              Toast.makeText(MainActivity2.this, "שיעורי גלישה", Toast.LENGTH_SHORT).show();
                                           }
                                       });
 

@@ -1,11 +1,15 @@
-package com.example.everyone_surf.model;
+package com.example.everyone_surf;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,15 +19,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.everyone_surf.Login;
-import com.example.everyone_surf.R;
-import com.example.everyone_surf.Register;
+import com.example.everyone_surf.model.Instructor;
 import com.example.everyone_surf.services.DatabaseService;
+import com.example.everyone_surf.services.ImageUtil;
 
 public class Register_instructor extends AppCompatActivity {
 
@@ -38,7 +43,17 @@ public class Register_instructor extends AppCompatActivity {
     ImageView ivInstructor;
 
     public static final String mysharedPrefences = "myPref";
-    private String email,password;
+    private String email, password;
+
+
+    private ActivityResultLauncher<Intent> captureImageLauncher;
+    /// Activity result launcher for capturing image from camera
+
+
+    // constant to compare
+    // the activity result code
+    int SELECT_PICTURE = 200;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +78,41 @@ public class Register_instructor extends AppCompatActivity {
         passwordInput = findViewById(R.id.registerPasswordI);
         btnRegister = findViewById(R.id.btnRegisterI);
 
-        etYEARS=findViewById(R.id.etYearExprience);
-        btnCamera=findViewById(R.id.btnCamera);
-        btnGallery=findViewById(R.id.btnGallery);
-        ivInstructor=findViewById(R.id.ivInstructor);
+        etYEARS = findViewById(R.id.etYearExprience);
+        btnCamera = findViewById(R.id.btnCamera);
+        btnGallery = findViewById(R.id.btnGallery);
+        ivInstructor = findViewById(R.id.ivInstructor);
         goToLogin = findViewById(R.id.goToLoginI);
+
+
+        /// register the activity result launcher for capturing image from camera
+        captureImageLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
+                        ivInstructor.setImageBitmap(bitmap);
+                    }
+                });
+
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImageFromGallery();
+
+
+            }
+        });
+
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                captureImageFromCamera();
+
+            }
+        });
+
 
         btnRegister.setOnClickListener(v -> {
             if (validateInputs()) {
@@ -90,15 +135,24 @@ public class Register_instructor extends AppCompatActivity {
         String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
 
-        String styear= etYEARS.getText().toString();
-        int year=Integer.parseInt(styear);
+        String styear = etYEARS.getText().toString();
+        int year = Integer.parseInt(styear);
 
         // בדיקת שדות ריקים בסיסיים
-        if (fname.isEmpty()) { fnameInput.setError("נא להזין שם פרטי"); return false; }
-        if (lname.isEmpty()) { lnameInput.setError("נא להזין שם משפחה"); return false; }
+        if (fname.isEmpty()) {
+            fnameInput.setError("נא להזין שם פרטי");
+            return false;
+        }
+        if (lname.isEmpty()) {
+            lnameInput.setError("נא להזין שם משפחה");
+            return false;
+        }
 
         // בדיקת טלפון (לפחות 10 ספרות)
-        if (phone.length() < 10) { phoneInput.setError("מספר טלפון לא תקין"); return false; }
+        if (phone.length() < 10) {
+            phoneInput.setError("מספר טלפון לא תקין");
+            return false;
+        }
 
         // בדיקת גיל (עד 2 ספרות)
         if (age.isEmpty() || age.length() > 2) {
@@ -141,20 +195,26 @@ public class Register_instructor extends AppCompatActivity {
         RadioButton selectedRadioButton = findViewById(selectedId);
         String gender = selectedRadioButton.getText().toString();
 
-        Instructor instructor = new Instructor("1", fname, lname, phone, gender, age, email, password,etYEARS,  ,"new");
-    public Instructor(String id, String fname, String lname, String phone, String gender, String age, String email, String password, int experience_year, String pic, String status) {
+
+        String stYears = etYEARS.getText().toString();
+        int years = Integer.parseInt(stYears);
+        String pic = ImageUtil.convertTo64Base(ivInstructor);
+
+        Instructor instructor = new Instructor("1", fname, lname, phone, gender, age, email, password, years, pic, "new");
 
 
-            databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<String>() {
+        databaseService.createNewInstructor(instructor, new DatabaseService.DatabaseCallback<Void>() {
             @Override
-            public void onCompleted(String uid) {
-                user.setId(uid);
+            public void onCompleted(Void v) {
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
                 editor.putString("email", email);
                 editor.putString("password", password);
 
                 editor.commit();
+
+
 
 
                 Toast.makeText(Register_instructor.this, "נרשמת בהצלחה!", Toast.LENGTH_SHORT).show();
@@ -167,11 +227,59 @@ public class Register_instructor extends AppCompatActivity {
             @Override
             public void onFailed(Exception e) {
 
-                Log.d("TAG", "createUser:success"+ user.toString());
+                Log.d("TAG", "createUser:success" + instructor.toString());
 
                 Toast.makeText(Register_instructor.this, "שגיאה: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
+    /// select image from gallery
+    private void selectImageFromGallery() {
+
+        imageChooser();
+    }
+
+    /// capture image from camera
+    private void captureImageFromCamera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        captureImageLauncher.launch(takePictureIntent);
+    }
+
+
+    void imageChooser() {
+
+        // create an instance of the
+        // intent of the type image
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        // pass the constant to compare it
+        // with the returned requestCode
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+    }
+
+    // this function is triggered when user
+    // selects the image from the imageChooser
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            // compare the resultCode with the
+            // SELECT_PICTURE constant
+            if (requestCode == SELECT_PICTURE) {
+                // Get the url of the image from data
+
+                Uri selectedImageUri = data.getData();
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    ivInstructor.setImageURI(selectedImageUri);
+                }
+            }
+        }
     }
 }
+
