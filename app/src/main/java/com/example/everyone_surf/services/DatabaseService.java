@@ -38,7 +38,7 @@ public class DatabaseService {
     /// @see DatabaseService#readData(String)
     private static final String USERS_PATH = "users",
                                 INSTRUCTORS_PATH = "instructors",
-                                CARTS_PATH = "carts";
+                                LESSON_PATH = "lessons";
 
     /// callback interface for database operations
     /// @param <T> the type of the object to return

@@ -1,6 +1,8 @@
 package com.example.everyone_surf;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -34,21 +36,45 @@ public class MainActivity2 extends AppCompatActivity {
         btnGuide = findViewById(R.id.btnGuide);
 
         // === BUTTON ACTIONS ===
-        btnBeaches.setOnClickListener(v ->
-                Toast.makeText(MainActivity2.this, "חופים בישראל", Toast.LENGTH_SHORT).show()
-        );
+        btnBeaches.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              Toast.makeText(MainActivity2.this, "חופים בישראל", Toast.LENGTH_SHORT).show();
+                                              Intent go = new Intent(MainActivity2.this, Login.class);
+                                              startActivity(go);
+                                          }
 
-        btnClubs.setOnClickListener(v ->
+
+                                      });
+
+
+
+
+        btnClubs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 Toast.makeText(MainActivity2.this, "מועדוני גלישה", Toast.LENGTH_SHORT).show()
-        );
+
+            }
+
+        });
 
         btnShops.setOnClickListener(v ->
                 Toast.makeText(MainActivity2.this, "חנויות גלישה", Toast.LENGTH_SHORT).show()
         );
 
-        btnLessons.setOnClickListener(v ->
-                Toast.makeText(MainActivity2.this, "שיעורי גלישה", Toast.LENGTH_SHORT).show()
-        );
+        btnLessons.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              Intent go = new Intent(MainActivity2.this, Login.class);
+                                              startActivity(go);
+
+                                              Toast.makeText(MainActivity2.this, "שיעורי גלישה", Toast.LENGTH_SHORT).show()
+                                          }
+                                      });
+
+
 
         btnGuide.setOnClickListener(v ->
                 Toast.makeText(MainActivity2.this, "מדריך למתחילים", Toast.LENGTH_SHORT).show()

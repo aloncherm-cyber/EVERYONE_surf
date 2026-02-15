@@ -12,11 +12,25 @@ import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonViewHolder> {
 
-    private List<Lesson> lessonList;
 
-    public LessonAdapter(List<Lesson> lessonList) {
-        this.lessonList = lessonList;
+
+
+    public interface OnLessonClickListener {
+        void onLessonClick(Lesson lesson);
+        void onLongLessonClick(Lesson lesson);
     }
+
+    private final List<Lesson> lessonList;
+    private final OnLessonClickListener onLessonClickListener;
+
+
+
+    public LessonAdapter(List<Lesson> lessonList, OnLessonClickListener onLessonClickListener) {
+        this.lessonList = lessonList;
+        this.onLessonClickListener = onLessonClickListener;
+    }
+
+    
 
     @NonNull
     @Override
@@ -28,10 +42,24 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonView
     @Override
     public void onBindViewHolder(@NonNull LessonViewHolder holder, int position) {
         Lesson lesson = lessonList.get(position);
-        holder.tvName.setText("מדריך: " + lesson.getInstructorName());
+        holder.tvName.setText("מדריך: " + lesson.getInstructor().getFname());
         holder.tvDateTime.setText(lesson.getDate() + " | " + lesson.getTime());
         holder.tvPrice.setText("מחיר: " + lesson.getPrice() + " ש\"ח");
         // כאן תוכל להוסיף לוגיקה לכפתור התקשרות
+
+        holder.itemView.setOnClickListener(v -> {
+            if (onLessonClickListener != null) {
+                onLessonClickListener.onLessonClick(lesson);
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
+            if (onLessonClickListener != null) {
+                onLessonClickListener.onLongLessonClick(lesson);
+            }
+            return true;
+        });
+
     }
 
     @Override

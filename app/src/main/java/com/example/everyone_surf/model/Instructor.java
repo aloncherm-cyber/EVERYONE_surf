@@ -5,10 +5,19 @@ public class Instructor  extends  User{
     int experience_year;
 
     String pic;
+    String status;
 
-    public Instructor(String id, String fname, String lname, String phone, String gender, String age, String email, String password, int experience_year) {
+    public Instructor(String id, String fname, String lname, String phone, String gender, String age, String email, String password, int experience_year, String pic, String status) {
         super(id, fname, lname, phone, gender, age, email, password);
         this.experience_year = experience_year;
+        this.pic = pic;
+        this.status = status;
+    }
+
+    public Instructor(int experience_year, String pic, String status) {
+        this.experience_year = experience_year;
+        this.pic = pic;
+        this.status = status;
     }
 
     public Instructor(int experience_year) {
@@ -17,6 +26,22 @@ public class Instructor  extends  User{
 
 
     public Instructor() {
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getExperience_year() {
@@ -31,6 +56,8 @@ public class Instructor  extends  User{
     public String toString() {
         return "Instructor{" +
                 "experience_year=" + experience_year +
+                ", pic='" + pic + '\'' +
+                ", status='" + status + '\'' +
                 ", id='" + id + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +

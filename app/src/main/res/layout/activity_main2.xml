@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="#0A4C8A"
-            android:text="שיעורי גלישה"
+            android:text="  קביעת שיעורי גלישה"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
