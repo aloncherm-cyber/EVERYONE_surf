@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v == registerbtn) {
-            Intent go = new Intent(MainActivity.this, Register.class);
+            Intent go = new Intent(MainActivity.this, RegisterTypeActivity.class);
             startActivity(go);
         }
 

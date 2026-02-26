@@ -15,15 +15,22 @@
         android:textColor="#0A4C8A"
         android:layout_marginBottom="20dp"/>
 
+
     <EditText android:id="@+id/etDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="תאריך (למשל 20/05)" android:inputType="date"/>
     <EditText android:id="@+id/etTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="שעה (למשל 10:00)" android:inputType="time"/>
+    <Spinner
+        android:id="@+id/spinner_region"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+     android:entries="@array/regionArr"/>
     <EditText android:id="@+id/etPrice" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="מחיר" android:inputType="number"/>
 
     <Button
         android:id="@+id/btnSaveLesson"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="פרסם שיעור"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#0A4C8A"/>
+        android:backgroundTint="#0A4C8A"
+        android:text="פרסם שיעור" />
 </LinearLayout>

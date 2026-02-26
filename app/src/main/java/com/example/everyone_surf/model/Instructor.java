@@ -28,6 +28,15 @@ public class Instructor  extends  User{
     public Instructor() {
     }
 
+    public Instructor(Instructor instructor) {
+        super(instructor.id, instructor.fname, instructor.lname, instructor.phone, instructor.gender, instructor.age, instructor.email);
+        this.experience_year = experience_year;
+        this.pic = pic;
+
+
+
+    }
+
     public String getPic() {
         return pic;
     }

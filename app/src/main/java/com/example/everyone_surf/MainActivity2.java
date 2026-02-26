@@ -72,7 +72,7 @@ public class MainActivity2 extends AppCompatActivity {
         btnLessons.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              Intent go = new Intent(MainActivity2.this, Login.class);
+                                              Intent go = new Intent(MainActivity2.this, activity_select_region.class);
                                               startActivity(go);
 
                                               Toast.makeText(MainActivity2.this, "שיעורי גלישה", Toast.LENGTH_SHORT).show();
@@ -81,8 +81,15 @@ public class MainActivity2 extends AppCompatActivity {
 
 
 
-        btnGuide.setOnClickListener(v ->
-                Toast.makeText(MainActivity2.this, "מדריך למתחילים", Toast.LENGTH_SHORT).show()
+        btnGuide.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent go = new Intent(MainActivity2.this, activity_add_lesson.class);
+                                            startActivity(go);
+                                            Toast.makeText(MainActivity2.this, "הוספת שיעור", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
         );
     }
 }

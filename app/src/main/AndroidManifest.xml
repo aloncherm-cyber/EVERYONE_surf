@@ -12,45 +12,82 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EVERYONE_surf"
         tools:targetApi="31">
-        <activity
-            android:name=".Register_instructor"
-            android:exported="false" />
-        <activity
-            android:name=".LessonProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LessonList"
-            android:exported="false" />
-        <activity
-            android:name=".activity_add_lesson"
-            android:exported="false" />
-        <activity
-            android:name=".activity_lesson_list"
-            android:exported="false" />
-        <activity
-            android:name=".activity_select_region"
-            android:exported="false" /> <!-- זה ה־Launcher -->
+
+        <!-- Splash (מסך פתיחה) -->
         <activity
             android:name=".splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- מסך בית (אחרי התחברות) -->
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" /> <!-- מסך בחירת התחברות/הרשמה -->
+        </activity>
+
+        <!-- מסך ראשי -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" /> <!-- התחברות -->
+            android:exported="false" />
+
+        <!-- אחרי התחברות -->
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+
+        <!-- התחברות -->
         <activity
             android:name=".Login"
-            android:exported="false" /> <!-- הרשמה -->
+            android:exported="false" />
+
+        <!-- הרשמה רגילה -->
         <activity
             android:name=".Register"
             android:exported="false" />
+
+        <!-- ✨ בחירת סוג הרשמה -->
+        <activity
+            android:name=".RegisterTypeActivity"
+            android:exported="false" />
+
+        <!-- הרשמת מדריך -->
+        <activity
+            android:name=".Register_instructor"
+            android:exported="false" />
+
+        <!-- מסך מדריך -->
+        <activity
+            android:name=".Instructor_Activity"
+            android:exported="false" />
+
+        <!-- מסך משתמש -->
+        <activity
+            android:name=".User_Activity"
+            android:exported="false" />
+
+        <!-- הוספת שיעור -->
+        <activity
+            android:name=".activity_add_lesson"
+            android:exported="false" />
+
+        <!-- רשימת שיעורים -->
+        <activity
+            android:name=".LessonList"
+            android:exported="false" />
+
+        <!-- פרטי שיעור -->
+        <activity
+            android:name=".LessonProfileActivity"
+            android:exported="false" />
+
+        <!-- רשימת משתמשים -->
+        <activity
+            android:name=".UsersListActivity"
+            android:exported="false" />
+
+        <!-- בחירת אזור -->
+        <activity
+            android:name=".activity_select_region"
+            android:exported="false" />
+
     </application>
 
 </manifest>

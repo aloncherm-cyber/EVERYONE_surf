@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAF6FF"
+    android:padding="20dp">
+
+    <!-- לוגו -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- כותרת -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="בחר סוג הרשמה"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#0A4C8A"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- הרשמה תלמיד -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="40dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnStudentRegister"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="הרשמה כתלמיד"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0A4C8A"
+            android:backgroundTint="@color/white"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- הרשמה מדריך -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.7">
+
+        <Button
+            android:id="@+id/btnInstructorRegister"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="הרשמה כמדריך"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0A4C8A"
+            android:backgroundTint="@color/white"/>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

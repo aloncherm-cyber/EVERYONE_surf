@@ -7,19 +7,28 @@ public class Lesson {
     private String region;        // צפון / מרכז / דרום
     private String date;          // תאריך
     private String time;          // שעה
-    private String price;         // מחיר
-    private String phone;         // טלפון ליצירת קשר
+    private double price;         // מחיר
+         // טלפון ליצירת קשר
 
+    protected  String status;
     public Lesson() { } // חובה עבור Firebase
 
-    public Lesson(String lessonId, Instructor instructor, String region, String date, String time, String price, String phone) {
+    public Lesson(String lessonId, Instructor instructor, String region, String date, String time, double price, String status) {
         this.lessonId = lessonId;
         this.instructor = instructor;
         this.region = region;
         this.date = date;
         this.time = time;
         this.price = price;
-        this.phone = phone;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     // Getters and Setters
@@ -28,8 +37,7 @@ public class Lesson {
     public String getRegion() { return region; }
     public String getDate() { return date; }
     public String getTime() { return time; }
-    public String getPrice() { return price; }
-    public String getPhone() { return phone; }
+    public double getPrice() { return price; }
 
     public void setLessonId(String lessonId) {
         this.lessonId = lessonId;
@@ -55,12 +63,8 @@ public class Lesson {
         this.time = time;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     @Override
@@ -71,8 +75,8 @@ public class Lesson {
                 ", region='" + region + '\'' +
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
-                ", price='" + price + '\'' +
-                ", phone='" + phone + '\'' +
+                ", price=" + price +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 
 import com.example.everyone_surf.model.Instructor;
+import com.example.everyone_surf.model.Lesson;
 import com.example.everyone_surf.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -439,9 +440,11 @@ public class DatabaseService {
     ///              if the operation fails, the callback will receive an exception
     /// @see DatabaseCallback
     /// @see Lesson
-//    public void createNewLesson(@NotNull final Lesson lesson, @Nullable final DatabaseCallback<Void> callback) {
-//        writeData(LESSONS_PATH + "/" + lesson.getId(), lesson, callback);
-//    }
+    public void createNewLesson(@NotNull final Lesson lesson, @Nullable final DatabaseCallback<Void> callback) {
+        writeData(LESSON_PATH + "/" + lesson.getLessonId(), lesson, callback);
+
+        writeData(INSTRUCTORS_PATH+"/"+lesson.getInstructor().getId()+"/myLessons"+"/"+lesson.getLessonId(),lesson,callback);
+    }
 
     /// get a lesson from the database
     /// @param lessonId the id of the lesson to get

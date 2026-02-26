@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="regionArr">
+
+        <item>צפון</item>
+        <item>מרכז</item>
+        <item>דרום</item>
+
+    </string-array>
+</resources>
