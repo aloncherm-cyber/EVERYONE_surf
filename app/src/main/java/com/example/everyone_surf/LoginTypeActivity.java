@@ -2,7 +2,6 @@ package com.example.everyone_surf;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -11,15 +10,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginTypeActivity extends AppCompatActivity {
 
-    Button registerbtn, loginbtn;
+    public static final String EXTRA_ROLE = "ROLE";
+    public static final String ROLE_USER = "USER";
+    public static final String ROLE_INSTRUCTOR = "INSTRUCTOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_type);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -27,28 +28,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        finds();
+        Button btnUser = findViewById(R.id.btnUserLogin);
+        Button btnInstructor = findViewById(R.id.btnInstructorLogin);
+
+        btnUser.setOnClickListener(v -> openLogin(ROLE_USER));
+        btnInstructor.setOnClickListener(v -> openLogin(ROLE_INSTRUCTOR));
     }
 
-    public void finds() {
-        registerbtn = findViewById(R.id.btnRegister);
-        loginbtn = findViewById(R.id.btnLoginMain);
-
-        registerbtn.setOnClickListener(this);
-        loginbtn.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        if (v == registerbtn) {
-            Intent go = new Intent(MainActivity.this, RegisterTypeActivity.class);
-            startActivity(go);
-        }
-
-        if (v == loginbtn) {
-            Intent go = new Intent(MainActivity.this, LoginTypeActivity.class);
-            startActivity(go);
-        }
+    private void openLogin(String role) {
+        Intent intent = new Intent(LoginTypeActivity.this, Login.class);
+        intent.putExtra(EXTRA_ROLE, role);
+        startActivity(intent);
     }
 }

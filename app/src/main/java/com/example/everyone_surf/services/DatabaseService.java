@@ -231,7 +231,7 @@ public class DatabaseService {
 
     // public methods to interact with the database
 
-    // region User Section
+
 
 
     /// create a new user in the database
@@ -271,14 +271,24 @@ public class DatabaseService {
     }
 
 
-    /// Login with email and password
-    ///
-    /// @param email    , password
-    /// @param callback the callback to call when the operation is completed
-    ///                              the callback will receive String (user id)
-    ///                            if the operation fails, the callback will receive an exception
-    /// @see DatabaseCallback
-    /// @see FirebaseAuth
+// region User Section
+
+    public void isUidExistsInPath(@NotNull String path,
+                                  @NotNull String uid,
+                                  @NotNull DatabaseCallback<Boolean> callback) {
+        readData(path + "/" + uid).get()
+                .addOnSuccessListener(snapshot -> callback.onCompleted(snapshot.exists()))
+                .addOnFailureListener(callback::onFailed);
+    }
+
+/// Login with email and password
+///
+/// @param email    , password
+/// @param callback the callback to call when the operation is completed
+///                              the callback will receive String (user id)
+///                            if the operation fails, the callback will receive an exception
+/// @see DatabaseCallback
+/// @see FirebaseAuth
 
     public void LoginUser(@NotNull final String email, final String password,
                           @Nullable final DatabaseCallback<String> callback) {
@@ -290,13 +300,13 @@ public class DatabaseService {
                 .addOnCompleteListener(task -> {
 
                     if (task.isSuccessful()) {
-                        Log.d("TAG", "createUserWithEmail:success");
+                        Log.d("TAG", "signInWithEmail:success");
 
                         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         callback.onCompleted(uid);
 
                     } else {
-                        Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                        Log.w("TAG", "signInWithEmail:failure", task.getException());
 
                         if (callback != null)
                             callback.onFailed(task.getException());
