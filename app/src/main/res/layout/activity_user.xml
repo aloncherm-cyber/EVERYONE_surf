@@ -100,6 +100,17 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/btnRequestInstructor"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="הגש בקשה להיות מדריך"
+            android:textStyle="bold"
+            android:textColor="#0A4C8A"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
     <!-- זכויות יוצרים -->

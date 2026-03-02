@@ -41,7 +41,7 @@
             android:name=".RegisterTypeActivity"
             android:exported="false" /> <!-- הרשמת מדריך -->
         <activity
-            android:name=".Register_instructor"
+            android:name=".Request_Instructor"
             android:exported="false" /> <!-- מסך מדריך -->
         <activity
             android:name=".Instructor_Activity"

@@ -31,7 +31,7 @@ public class RegisterTypeActivity extends AppCompatActivity implements View.OnCl
         }
 
         if (v == btnInstructor) {
-            startActivity(new Intent(this, Register_instructor.class));
+            startActivity(new Intent(this, Request_Instructor.class));
         }
     }
 }

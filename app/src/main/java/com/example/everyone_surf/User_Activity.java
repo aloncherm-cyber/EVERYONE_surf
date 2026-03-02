@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class User_Activity extends AppCompatActivity {
 
-    Button btnBeaches, btnClubs, btnShops, btnLessons, btnGuide;
+    Button btnBeaches, btnClubs, btnShops, btnLessons, btnGuide, btnRequestInstructor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +34,12 @@ public class User_Activity extends AppCompatActivity {
         btnShops = findViewById(R.id.btnShops);
         btnLessons = findViewById(R.id.btnLessons);
         btnGuide = findViewById(R.id.btnGuide);
+        btnRequestInstructor = findViewById(R.id.btnRequestInstructor);
 
         // === BUTTON ACTIONS ===
-        btnBeaches.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View v) {
-                                              Toast.makeText(User_Activity.this, "חופים בישראל", Toast.LENGTH_SHORT).show();
-                                              Intent go = new Intent(User_Activity.this,Register_instructor.class);
-                                              startActivity(go);
-                                          }
-
-
-                                      });
+        btnBeaches.setOnClickListener(v ->
+                Toast.makeText(User_Activity.this, "חופים בישראל", Toast.LENGTH_SHORT).show()
+        );
 
 
 
@@ -91,5 +85,11 @@ public class User_Activity extends AppCompatActivity {
                                     }
 
         );
+
+
+        btnRequestInstructor.setOnClickListener(v -> {
+            Intent go = new Intent(User_Activity.this, Request_Instructor.class);
+            startActivity(go);
+        });
     }
 }

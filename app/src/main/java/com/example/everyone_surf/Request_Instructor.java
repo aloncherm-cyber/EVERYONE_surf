@@ -1,6 +1,6 @@
 package com.example.everyone_surf;
 
-import android.content.Context;
+import  android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -30,7 +30,7 @@ import com.example.everyone_surf.model.Instructor;
 import com.example.everyone_surf.services.DatabaseService;
 import com.example.everyone_surf.services.ImageUtil;
 
-public class Register_instructor extends AppCompatActivity {
+public class Request_Instructor extends AppCompatActivity {
 
 
     EditText fnameInput, lnameInput, phoneInput, ageInput, emailInput, passwordInput, etYEARS;
@@ -58,7 +58,7 @@ public class Register_instructor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register_instructor);
+        setContentView(R.layout.activity_request_insturctor);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -121,7 +121,7 @@ public class Register_instructor extends AppCompatActivity {
         });
 
         goToLogin.setOnClickListener(v -> {
-            startActivity(new Intent(Register_instructor.this, Login.class));
+            startActivity(new Intent(Request_Instructor.this, Login.class));
             finish();
         });
     }
@@ -217,8 +217,8 @@ public class Register_instructor extends AppCompatActivity {
 
 
 
-                Toast.makeText(Register_instructor.this, "נרשמת בהצלחה!", Toast.LENGTH_SHORT).show();
-                Intent go = new Intent(Register_instructor.this, Login.class);
+                Toast.makeText(Request_Instructor.this, "נרשמת בהצלחה!", Toast.LENGTH_SHORT).show();
+                Intent go = new Intent(Request_Instructor.this, Login.class);
                 go.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(go);
 
@@ -229,7 +229,7 @@ public class Register_instructor extends AppCompatActivity {
 
                 Log.d("TAG", "createUser:success" + instructor.toString());
 
-                Toast.makeText(Register_instructor.this, "שגיאה: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Request_Instructor.this, "שגיאה: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
